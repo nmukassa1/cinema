@@ -10,6 +10,7 @@ html {
 body {
   background: black;
   font-family: Helvetica Neue, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
   color: white;
   padding: 0;
   list-style: none;
@@ -259,12 +260,21 @@ nav.mobile a {
   .control-panel {
     left: 0;
     transform: translateX(0);
+    padding: 0 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: end;
   }
 }
 
 .control-panel__title h1 {
   font-weight: 300;
   margin: 0 0 10px;
+}
+@media (max-width: 25.56rem) {
+  .control-panel__title h1 {
+    margin-bottom: 0.125rem;
+  }
 }
 
 .control-panel__play-trailer {
@@ -301,6 +311,18 @@ nav.mobile a {
   text-decoration: none;
   padding: 10px 20px;
   font-size: 1.3rem;
+}
+@media (max-width: 25.56rem) {
+  .book-now {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 25.56rem) {
+  .age-classification {
+    font-size: 0.8rem;
+  }
 }
 
 .age-classification img {

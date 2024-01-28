@@ -60,12 +60,19 @@
     @include breakpoints.breakpoint-down(small){
         left: 0;
         transform: translateX(0);
+        padding: 0 .5rem;
+        width: 100%;
+        justify-content: space-between;
+        align-items: end;
     }
 }
 
 .control-panel__title h1{
     font-weight: 300;
     margin: 0 0 10px;
+    @include breakpoints.breakpoint-down(small){
+        margin-bottom: .125rem;
+    }
 }
 
 .control-panel__play-trailer{
@@ -98,11 +105,21 @@
     text-decoration: none;
     padding: 10px 20px;
     font-size: 1.3rem;
+    @include breakpoints.breakpoint-down(small){
+        font-size: 0.9rem;
+        padding: 5px 10px;
+    }
 }
 
+.age-classification{
+    @include breakpoints.breakpoint-down(small){
+        font-size: .8rem;
+    }
+}
 
 .age-classification img{
     width: 22px;
     float: left;
     margin-right: 5px;
 }
+
