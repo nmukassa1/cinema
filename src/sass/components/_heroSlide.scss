@@ -1,0 +1,108 @@
+@use '../util/colors';
+@use '../util//breakpoints';
+
+.hero-slide{
+    overflow: hidden;
+    @include breakpoints.breakpoint-down(small){
+        width: min(100% - 1.5rem, 1040px);
+        margin-inline: auto;
+        border-radius: 10px;
+    }
+}
+
+.slide{
+    display: flex;
+    align-items: center;
+    /* overflow: scroll; */
+    /* scroll-snap-type: x mandatory; */
+    transition: all .8s ease;
+    @include breakpoints.breakpoint-down(small){
+        height: 20rem;
+    }
+}
+
+.slide-item{
+    flex-shrink: 0;
+    width: 100%;
+    position: relative;
+    @include breakpoints.breakpoint-down(small){
+        height: 100%;
+    }
+    /* scroll-snap-align: start; */
+    img{
+        @include breakpoints.breakpoint-down(small){
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+
+.slide-item__movie::after{
+    content: '';
+    width: 100%;
+    height: 130px;
+    background-image: linear-gradient(to top, hsla(0, 0%, 0%), hsla(0, 100%, 0%, 0));
+    position: absolute;
+    bottom: 0;
+    z-index: 999;
+}
+
+.control-panel{ 
+    position: absolute;
+    left: 50%;
+    bottom: 6%;
+    transform: translateX(-50%);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    @include breakpoints.breakpoint-down(small){
+        left: 0;
+        transform: translateX(0);
+    }
+}
+
+.control-panel__title h1{
+    font-weight: 300;
+    margin: 0 0 10px;
+}
+
+.control-panel__play-trailer{
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 1000px;
+    height: 70px;
+    width: 70px;
+    color: white;
+    display: grid;
+    place-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    @include breakpoints.breakpoint-down(small){
+        display: none;
+    }
+}
+
+.control-panel__play-trailer svg{
+    width: inherit;
+}
+
+.book-now{
+    box-sizing: content-box;
+    border-width: 2px;
+    border-style: solid;
+    border-image: colors.$theme-gradient;
+    border-image-slice: 1;
+    min-width: fit-content;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.3rem;
+}
+
+
+.age-classification img{
+    width: 22px;
+    float: left;
+    margin-right: 5px;
+}

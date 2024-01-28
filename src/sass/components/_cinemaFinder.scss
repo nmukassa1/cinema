@@ -1,0 +1,160 @@
+@use '../util/colors';
+@use '../util/breakpoints';
+
+.cinema-finder, .cinema-finder__dropdown{
+    display: flex;
+    align-items: center;
+}
+
+.cinema-finder{
+    position: relative;
+    gap: 30px;
+    padding: 25px 0;
+
+    h2{
+        flex-shrink: 0;
+        @include breakpoints.breakpoint-down(small){
+            margin-bottom: 0;
+        }
+    }
+    // padding: 30px 147px;
+
+    // &:before{
+    //     position: absolute;
+    //     bottom: 0;
+    //     left: 50%;
+    //     content: "";
+    //     width: 100%;
+    //     opacity: 0.6;
+    //     filter: blur(100px);
+    //     height: 100px;
+    //     max-width: 37.1875rem;
+    //     transform: translateX(-50%);
+    //     background: linear-gradient(to top, #de6a00 0, #0e0700 100%);
+    // }
+
+    &:after{
+        // Bottom Bar
+        content: '';
+        height: 2px;
+        width: 100%;
+        bottom: 0;
+        background-image: colors.$theme-gradient;
+        position: absolute;
+    }
+
+    @include breakpoints.breakpoint-down(medium){
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+}
+
+.cinema-finder__button{
+    border: 1px solid colors.$grey;
+    padding: 10px 35px;
+    &:hover{
+        box-shadow: 0 0 50px -10px hsl(0, 0%, 100%, .9)
+    }
+}
+
+.cinema-finder-venue-selector-box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.cinema-finder__dropdown{
+    width: 100%;
+    position: relative;
+}
+
+.dropdown-opener{
+    width: 100%;
+    border-bottom: 1px solid;
+    padding: 4px;
+    text-align: left;
+    display: flex;
+    background: transparent;
+    color: colors.$grey;
+    border-bottom: 1px solid colors.$grey
+}
+.cinema-finder__dropdown-icon{
+    margin-left: auto;
+}
+
+
+
+.handleDisplayToggle{
+    display: absolute;
+}
+
+.dropdown-menu{
+    background: black;
+    border: 1px solid colors.$grey;
+    width: 400px;
+    height: 360px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 10px;
+    display: none;
+    z-index: 9;
+
+    @include breakpoints.breakpoint-down(medium){
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        border: none;
+        display: block;
+        left: initial;
+        width: 100%;
+        height: 100vh;
+        transition: all ease .7s;
+    }
+
+}
+
+#dropdown-menu__header{
+    display: flex;
+    align-items: center;
+}
+#dropdown-menu__header button{
+    margin-left: auto;
+    color: white;
+}
+
+.dropdown-menu__title{
+    @include colors.bgGradient;
+    font-weight: 400;
+}
+
+.dropdown-menu__search{
+    display: flex;
+    border-bottom: 1px solid colors.$grey;
+    padding-bottom: 10px;
+}
+
+input{
+    width: 100%;
+    color: colors.$grey;
+    background: transparent;
+    border: none;
+}
+input:focus{
+    outline: none;
+}
+
+.dropdown-item {
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    border-bottom: 1px solid colors.$grey;
+    color: white;
+}
+.dropdown-item:hover{
+    border-bottom: 1px solid white;
+}
+
+
