@@ -98,7 +98,7 @@ console.log(currentFilmScheduel);
                 <div>
                     <CinemaLocation placeholder={placeholder} setPlaceholder={setPlaceholder}/>
 
-                    <div className="filer">
+                    <div className="filter">
                         <button><FontAwesomeIcon icon={faFilter} />
                             Filter All Films & Events
                         </button>
@@ -122,32 +122,30 @@ console.log(currentFilmScheduel);
                         </div>
 
                         <div className="schedule">
-                            <div>
-                                {currentFilmScheduel.map((item, index) => (
-                                    <div key={index}>
-                                        <h2>{index === 0 ? `UPCOMING SHOWINGS FOR TODAY` : item.day} </h2> 
-                                        <ul className="card-schedule-container">
-                                            {item.time_screen.map((item, index) => (
-                                               <li key={index}>
-                                                    <button className="card-schedule">
-                                                        <div>
-                                                            <div className="time">
-                                                                <span>{item.time}</span>
-                                                            </div>
-                                                            <div className="screen">
-                                                                <span>Screen {item.screen}</span>
-                                                            </div>
+                            {currentFilmScheduel.map((item, index) => (
+                                <div key={index}>
+                                    <h2>{index === 0 ? `UPCOMING SHOWINGS FOR TODAY` : item.day} </h2> 
+                                    <ul className="card-schedule-container">
+                                        {item.time_screen.map((item, index) => (
+                                            <li key={index}>
+                                                <button className="card-schedule">
+                                                    <div>
+                                                        <div className="time">
+                                                            <span>{item.time}</span>
                                                         </div>
-                                                        <div className="price">
-                                                            <span>FROM £4.99</span>
+                                                        <div className="screen">
+                                                            <span>Screen {item.screen}</span>
                                                         </div>
-                                                    </button>
-                                               </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
+                                                    </div>
+                                                    <div className="price">
+                                                        <span>FROM £4.99</span>
+                                                    </div>
+                                                </button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

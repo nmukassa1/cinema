@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser,
         faMagnifyingGlass, 
@@ -33,7 +33,11 @@ function Navbar() {
 
     const dropdownMenuu = useRef()
 
-    console.log('NOTE: Come back to finish off the dropdown nav menu for mobile & Tablet. Also fix the side scrolling issue. If in doubt, create a different animation')
+    useEffect(() => {
+        console.log('NOTE: Come back to finish off the dropdown nav menu for mobile & Tablet. Also fix the side scrolling issue. If in doubt, create a different animation')
+
+    },[])
+
     return ( 
         <header className='container'>
             <Link to="/" className='logo'>

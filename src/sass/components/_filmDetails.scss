@@ -1,5 +1,9 @@
 @use '../util//colors';
 
+h2.section-title{
+    margin-top: 0;
+}
+
 .film-details{
     position: relative;
         &__image{
@@ -81,6 +85,10 @@
             flex-shrink: 0;
         }
     }
+}
+
+.filter{
+    margin-top: 1rem;
 }
 
 

@@ -7,7 +7,6 @@ import {useState} from 'react'
 
 function Home() {
     const {locationShowings} = useData()
-    console.log(locationShowings);
 
     const [placeholder, setPlaceholder] = useState(locationShowings[0].location);
     // const placeholder = locationShowings[0].location;
