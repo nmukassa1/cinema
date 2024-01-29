@@ -15,6 +15,7 @@ body {
   padding: 0;
   list-style: none;
   margin: 0;
+  padding-bottom: 1.6rem;
 }
 
 button {
@@ -521,6 +522,7 @@ input:focus {
 #top-films-footer {
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
 }
 
 #top-films-footer a {
@@ -630,6 +632,26 @@ h2.section-title {
 
 .filter {
   margin-top: 1rem;
+}
+
+.filter-button {
+  display: flex;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.days-of-week {
+  display: flex;
+}
+
+.day {
+  padding: 0.2rem 0.8rem;
+  border-radius: 1.3125rem;
+}
+
+.active {
+  background-image: linear-gradient(90deg, #eec42a, #b74d1c);
+  color: black;
 }
 
 .card-schedule {

@@ -91,6 +91,23 @@ h2.section-title{
     margin-top: 1rem;
 }
 
+.filter-button{
+    display: flex;
+    gap: .3rem;
+    cursor: pointer;
+}
+
+.days-of-week{
+    display: flex;
+}
+.day{
+    padding: .2rem .8rem;
+    border-radius: calc(21px / 16px * 1rem);
+}
+.active{
+    background-image: colors.$theme-gradient;
+    color: black;
+}
 
 .card-schedule{
     width: 100%;

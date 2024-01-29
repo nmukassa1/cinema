@@ -3,13 +3,18 @@ import HeroSlide from "../Components/HeroSlide";
 import TopFilms from "../Components/TopFilms";
 
 import useData from "../Hooks/useData";
-import {useState} from 'react'
+import useScrollToTop from '../Hooks/useScrollToTop';
+import {useState, useEffect} from 'react'
 
 function Home() {
     const {locationShowings} = useData()
-
+    const {scrollToTop} = useScrollToTop()
     const [placeholder, setPlaceholder] = useState(locationShowings[0].location);
-    // const placeholder = locationShowings[0].location;
+    
+    useEffect(() => {
+        scrollToTop()
+    }, [])
+
     return ( 
         <div>
             <HeroSlide />

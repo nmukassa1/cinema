@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useData from "../Hooks/useData";
+import useScrollToTop from "../Hooks/useScrollToTop";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from '@fortawesome/free-solid-svg-icons'
 import CinemaLocation from "../Components/CinemaLocation";
@@ -8,10 +9,34 @@ import CinemaLocation from "../Components/CinemaLocation";
 
 function Cinema() {
 
+    const {scrollToTop} = useScrollToTop();
     const {location, id} = useParams();
     const {locationShowings, filmDb, daysOfWeek} = useData()
-
     const [placeholder, setPlaceholder] = useState(location)
+    const ref = useRef([])
+
+    const pushRef = (el) => ref.current.push(el)
+
+    useEffect(() => {
+        scrollToTop();
+
+       if(ref.current){
+         //loop over all elements to apply eventlistenr
+         ref.current.forEach((item) => {
+            item.addEventListener('click', (e) => {
+                //loop over all elements to remove className 'active'
+                ref.current.forEach((item) => {
+                    item.classList.remove('active')
+                })
+
+                item.classList.add('active')
+            })
+        })
+       }
+    }, [])
+    
+
+    
 
     let movie
     if(filmDb) movie = Object.values(filmDb).find((movie) => movie.id === id)
@@ -39,7 +64,6 @@ function Cinema() {
             })
         }
     }
-console.log(currentFilmScheduel);
 
 
     const today = new Date().getDay();
@@ -54,7 +78,7 @@ console.log(currentFilmScheduel);
         }
     }
 
-    const [daySelected, setDayDelected] = useState(newDaysOfWeek[tracker])
+    
 
     return ( 
         <div className="film-details">
@@ -99,54 +123,59 @@ console.log(currentFilmScheduel);
                     <CinemaLocation placeholder={placeholder} setPlaceholder={setPlaceholder}/>
 
                     <div className="filter">
-                        <button><FontAwesomeIcon icon={faFilter} />
-                            Filter All Films & Events
-                        </button>
+
+                        <div className="filter-button">
+                            <div className="filter-icon">
+                                <FontAwesomeIcon icon={faFilter} />
+                            </div>
+                            <button>Filter All Films & Events</button>
+                        </div>
+
                         <div className="filter-dropdown">
                             {/* Filters */}
                         </div>
-
+                    </div>
                         {/* FILM PANEL */}
-                        <div className="film-showings">
-                            <ul className="panel">
-                                {newDaysOfWeek.map((day, index) => (
-                                    <li key={index}>
-                                        <button>
-                                            {index === 0 && ('Today')}
-                                            {index === 1 && ('Tomorrow')} 
-                                            {index > 1 && day.split('', 3)} 
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    <ul className="days-of-week">
+                        {newDaysOfWeek.map((day, index) => (
+                            <li key={index}>
+                                <button 
+                                    ref={pushRef} 
+                                    className={`day ${index === 0 ? ('active') : ''}`}
+                                     >
+                                    {index === 0 && ('Today')}
+                                    {index === 1 && ('Tomorrow')} 
+                                    {index > 1 && day.split('', 3)} 
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
 
-                        <div className="schedule">
-                            {currentFilmScheduel.map((item, index) => (
-                                <div key={index}>
-                                    <h2>{index === 0 ? `UPCOMING SHOWINGS FOR TODAY` : item.day} </h2> 
-                                    <ul className="card-schedule-container">
-                                        {item.time_screen.map((item, index) => (
-                                            <li key={index}>
-                                                <button className="card-schedule">
-                                                    <div>
-                                                        <div className="time">
-                                                            <span>{item.time}</span>
-                                                        </div>
-                                                        <div className="screen">
-                                                            <span>Screen {item.screen}</span>
-                                                        </div>
+                    <div className="schedule">
+                        {currentFilmScheduel.map((item, index) => (
+                            <div key={index}>
+                                <h2>{index === 0 ? `UPCOMING SHOWINGS FOR TODAY` : item.day} </h2> 
+                                <ul className="card-schedule-container">
+                                    {item.time_screen.map((item, index) => (
+                                        <li key={index}>
+                                            <button className="card-schedule">
+                                                <div>
+                                                    <div className="time">
+                                                        <span>{item.time}</span>
                                                     </div>
-                                                    <div className="price">
-                                                        <span>FROM £4.99</span>
+                                                    <div className="screen">
+                                                        <span>Screen {item.screen}</span>
                                                     </div>
-                                                </button>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
+                                                </div>
+                                                <div className="price">
+                                                    <span>FROM £4.99</span>
+                                                </div>
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
