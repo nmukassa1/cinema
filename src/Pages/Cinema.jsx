@@ -82,36 +82,38 @@ function Cinema() {
 
     return ( 
         <div className="film-details">
-            <div className="film-details__image">
-                <img src={movie.img} alt={movie.alt} />
-            </div>
+            <div className="film-details-hero">
+                <div className="film-details__image">
+                    <img src={movie.img} alt={movie.alt} />
+                </div>
 
-            <div className="container">
-                <div className="film-details__wrapper">
-                    <div className="film-details__poster-img">
-                        <img src={movie.poster} alt={movie.alt} />
-                    </div>
-                    <div className="film-details__info-wrapper">
-                        <div className="film-details__info">
-                            <h1 className="film-details__title">
-                                {movie.title}
-                            </h1>
+                <div className="container">
+                    <div className="film-details__wrapper">
+                        <div className="film-details__poster-img">
+                            <img src={movie.poster} alt={movie.alt} />
+                        </div>
+                        <div className="film-details__info-wrapper">
+                            <div className="film-details__info">
+                                <h1 className="film-details__title">
+                                    {movie.title}
+                                </h1>
 
-                            <div className="film-details__age-certificate">
-                                <img src={movie.ageCertificate.img} alt="" />
-                                <p>{movie.ageCertificate.info}</p>
-                            </div>
+                                <div className="film-details__age-certificate">
+                                    <img src={movie.ageCertificate.img} alt="" />
+                                    <p>{movie.ageCertificate.info}</p>
+                                </div>
 
-                            <div className="film-details__logline">
-                                <p>{movie.logline}</p>
-                            </div>
+                                <div className="film-details__logline">
+                                    <p>{movie.logline}</p>
+                                </div>
 
-                            <div className="cheaper-online">
-                                £1 cheaper online
-                            </div>
+                                <div className="cheaper-online">
+                                    £1 cheaper online
+                                </div>
 
-                            <div className="film-details__more-info">
-                                <button className="full-details__btn">Full Details</button>
+                                <div className="film-details__more-info">
+                                    <button className="full-details__btn">Full Details</button>
+                                </div>
                             </div>
                         </div>
                     </div>
