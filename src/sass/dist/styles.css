@@ -625,6 +625,26 @@ h2.section-title {
   padding-left: 0;
 }
 
+.details {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.8s ease;
+}
+
+.revealDetails {
+  height: auto;
+}
+
+.synopsis h3 {
+  margin: 0.4rem 0 0.2rem;
+}
+.synopsis p {
+  margin: 0;
+}
+.synopsis h3, .synopsis p {
+  font-size: 0.8rem;
+}
+
 .film-showings .panel {
   display: flex;
   align-items: center;

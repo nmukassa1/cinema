@@ -35,6 +35,18 @@ function useData() {
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
     const todaysDay = new Date().getDay();
+
+    const today = new Date().getDay();
+    let newDaysOfWeek = []
+    let tracker = today;
+    for(let i = 0; i < 6; i++){ 
+        newDaysOfWeek.push(daysOfWeek[tracker])
+        if(tracker === 6){
+            tracker = 0
+        } else{
+            tracker++
+        }
+    }
     
 
 
@@ -190,7 +202,7 @@ function useData() {
     ]
 
 
-    return { filmDb, locationShowings , daysOfWeek};
+    return { filmDb, locationShowings , daysOfWeek, newDaysOfWeek};
 }
 
 export default useData;

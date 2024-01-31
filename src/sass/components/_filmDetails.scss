@@ -80,6 +80,26 @@ h2.section-title{
     // letter-spacing: .8px;
 }
 
+.details{
+    overflow: hidden;
+    height: 0;
+    transition: height .8s ease;
+}
+//React Function
+.revealDetails{
+    height: auto;
+}
+
+.synopsis{
+    h3{
+        margin: .4rem 0 .2rem;
+    }
+    p{
+        margin: 0;
+    }
+    h3, p{font-size: .8rem;}
+}
+
 .film-showings{
     .panel{
         display: flex;
