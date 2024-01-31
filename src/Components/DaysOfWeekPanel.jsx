@@ -1,12 +1,9 @@
 import useData from '../Hooks/useData'
-import {useEffect, useRef} from 'react'
+import {useEffect} from 'react'
 
 function DaysOfWeekPanel() {
 
     const {daysOfWeek} = useData()
-    const ref = useRef([])
-
-    const pushRef = (el) => ref.current.push(el)
 
     const today = new Date().getDay();
     let newDaysOfWeek = []
@@ -20,25 +17,7 @@ function DaysOfWeekPanel() {
         }
     }
 
-
-
-    // useEffect(() => {
-    //     if(ref.current){
-    //         //loop over all elements to apply eventlistenr
-    //         ref.current.forEach((item) => {
-    //            item.addEventListener('click', (e) => {
-    //                //loop over all elements to remove className 'active'
-    //                ref.current.forEach((item) => {
-    //                    item.classList.remove('active')
-    //                })
-   
-    //                item.classList.add('active')
-    //            })
-    //        })
-    //     }
-    // }, [])
-
-    function highlight(e){
+    function handleHighlight(e){
         const elements = Object.values(document.getElementsByClassName('day'));
 
         // Remove highlight button that's active
@@ -55,10 +34,9 @@ function DaysOfWeekPanel() {
     <ul className="days-of-week">
         {newDaysOfWeek.map((day, index) => (
             <li key={index}>
-                <button 
-                    // ref={pushRef} 
+                <button  
                     className={`day ${index === 0 ? ('active') : ''}`}
-                    onClick={(e) => highlight(e)}
+                    onClick={(e) => handleHighlight(e)}
                 >
                     {index === 0 && ('Today')}
                     {index === 1 && ('Tomorrow')} 
