@@ -16,6 +16,7 @@ function Cinema() {
     const {filmDb, daysOfWeek} = useData()
     const [placeholder, setPlaceholder] = useState(location)
     const [revealDetails, setRevealDetails] = useState('')
+    const [filterFilmByDay, setFilterFilmByDay] = useState(null)
 
     let movie
     if(filmDb) movie = Object.values(filmDb).find((movie) => movie.id === id)
@@ -108,8 +109,8 @@ function Cinema() {
                         </div>
                     </div>
 
-                    <DaysOfWeekPanel />
-                    <FilmScheduel />
+                    <DaysOfWeekPanel setFilterFilmByDay={setFilterFilmByDay} />
+                    <FilmScheduel filterFilmByDay={filterFilmByDay} />
                 </div>
             </div>
         </div>

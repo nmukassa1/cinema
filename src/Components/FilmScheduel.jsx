@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import useData from '../Hooks/useData'
 import { useParams } from "react-router-dom";
 
-function FilmScheduel() {
+function FilmScheduel({filterFilmByDay}) {
 
     const {filmDb, locationShowings, newDaysOfWeek} = useData()
     const {id, location} = useParams();
@@ -20,6 +20,16 @@ function FilmScheduel() {
     useEffect(() => {
         setFilmScheduel(currentFilmScheduel)
     }, [])
+
+    //Show schedule for what day was clicked
+    useEffect(() => {
+        if(filterFilmByDay !== null){
+            const day = locationScheduel.find((item) => item.dateId === filterFilmByDay);
+            const movie = day.movies.find((item) => item.id === id.toString())
+            setFilmScheduel([movie])
+            console.log(day);
+        }
+    }, [filterFilmByDay])
 
     if (locationShowings) {
         //  location of cinema

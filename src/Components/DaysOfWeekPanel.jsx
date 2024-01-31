@@ -1,7 +1,7 @@
 import useData from '../Hooks/useData'
 import {useEffect} from 'react'
 
-function DaysOfWeekPanel() {
+function DaysOfWeekPanel({filterFilmByDay, setFilterFilmByDay}) {
 
     const {daysOfWeek} = useData()
 
@@ -27,6 +27,13 @@ function DaysOfWeekPanel() {
         
         // Highlight button that was clicked
         e.target.classList.add('active')
+
+        handleFilterFilmByDay(e)
+    }
+
+    function handleFilterFilmByDay(e){
+        if(parseInt(e.target.id) >= 3) return
+        setFilterFilmByDay(parseInt(e.target.id))
     }
     
 
@@ -35,6 +42,7 @@ function DaysOfWeekPanel() {
         {newDaysOfWeek.map((day, index) => (
             <li key={index}>
                 <button  
+                    id={index}
                     className={`day ${index === 0 ? ('active') : ''}`}
                     onClick={(e) => handleHighlight(e)}
                 >

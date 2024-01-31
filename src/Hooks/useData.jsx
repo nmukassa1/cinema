@@ -56,6 +56,7 @@ function useData() {
         schedual: {
             today: {
                 date: daysOfWeek[todaysDay],
+                dateId: 0,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
@@ -79,6 +80,7 @@ function useData() {
             },
             tomorrow: {
                 date: daysOfWeek[todaysDay + 1],
+                dateId: 1,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
@@ -102,6 +104,7 @@ function useData() {
             },
             nextDay1: {
                 date: daysOfWeek[todaysDay + 2],
+                dateId: 2,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
@@ -130,6 +133,7 @@ function useData() {
         schedual: {
             today: {
                 date: daysOfWeek[todaysDay],
+                dateId: 0,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
@@ -153,6 +157,7 @@ function useData() {
             },
             tomorrow: {
                 date: daysOfWeek[todaysDay + 1],
+                dateId: 1,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
@@ -176,6 +181,7 @@ function useData() {
             },
             nextDay1: {
                 date: daysOfWeek[todaysDay + 2],
+                dateId: 3,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
