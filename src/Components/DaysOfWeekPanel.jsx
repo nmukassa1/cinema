@@ -22,21 +22,33 @@ function DaysOfWeekPanel() {
 
 
 
-    useEffect(() => {
-        if(ref.current){
-            //loop over all elements to apply eventlistenr
-            ref.current.forEach((item) => {
-               item.addEventListener('click', (e) => {
-                   //loop over all elements to remove className 'active'
-                   ref.current.forEach((item) => {
-                       item.classList.remove('active')
-                   })
+    // useEffect(() => {
+    //     if(ref.current){
+    //         //loop over all elements to apply eventlistenr
+    //         ref.current.forEach((item) => {
+    //            item.addEventListener('click', (e) => {
+    //                //loop over all elements to remove className 'active'
+    //                ref.current.forEach((item) => {
+    //                    item.classList.remove('active')
+    //                })
    
-                   item.classList.add('active')
-               })
-           })
-        }
-    }, [])
+    //                item.classList.add('active')
+    //            })
+    //        })
+    //     }
+    // }, [])
+
+    function highlight(e){
+        const elements = Object.values(document.getElementsByClassName('day'));
+
+        // Remove highlight button that's active
+        elements.forEach(el => {
+            if(el.classList.contains('active')) el.classList.remove('active')
+        });
+        
+        // Highlight button that was clicked
+        e.target.classList.add('active')
+    }
     
 
     return ( 
@@ -44,9 +56,10 @@ function DaysOfWeekPanel() {
         {newDaysOfWeek.map((day, index) => (
             <li key={index}>
                 <button 
-                    ref={pushRef} 
+                    // ref={pushRef} 
                     className={`day ${index === 0 ? ('active') : ''}`}
-                        >
+                    onClick={(e) => highlight(e)}
+                >
                     {index === 0 && ('Today')}
                     {index === 1 && ('Tomorrow')} 
                     {index > 1 && day.split('', 3)} 
