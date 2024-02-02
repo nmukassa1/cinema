@@ -33,11 +33,6 @@ function Navbar() {
 
     const dropdownMenuu = useRef()
 
-    useEffect(() => {
-        console.log('NOTE: Come back to finish off the dropdown nav menu for mobile & Tablet. Also fix the side scrolling issue. If in doubt, create a different animation')
-
-    },[])
-
     return ( 
         <header className='container'>
             <Link to="/" className='logo'>

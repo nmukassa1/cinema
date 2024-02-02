@@ -6,7 +6,7 @@ function FilmScheduel({filterFilmByDay}) {
 
     const {filmDb, locationShowings, newDaysOfWeek} = useData()
     const {id, location} = useParams();
-    const [upcomingShowingToday, setUpcomingShowingToday] = useState(`TODAY`)
+    const [day, setDay] = useState('TODAY')
     const [filmScheduel, setFilmScheduel] = useState([])
 
     
@@ -24,10 +24,11 @@ function FilmScheduel({filterFilmByDay}) {
     //Show schedule for what day was clicked
     useEffect(() => {
         if(filterFilmByDay !== null){
-            const day = locationScheduel.find((item) => item.dateId === filterFilmByDay);
-            const movie = day.movies.find((item) => item.id === id.toString())
+            const dayInfo = locationScheduel.find((item) => item.dateId === filterFilmByDay);
+            const movie = dayInfo.movies.find((item) => item.id === id.toString())
+            setDay(dayInfo.date)
             setFilmScheduel([movie])
-            console.log(day);
+            // console.log(x);
         }
     }, [filterFilmByDay])
 
@@ -52,15 +53,17 @@ function FilmScheduel({filterFilmByDay}) {
         }
     }
 
+    // const x = <span>{day}</span>
+
+
     return ( 
         <div className="schedule">
             {filmScheduel.length > 0 && (
                 filmScheduel.map((item, index) => (
                     <div key={index}>
                         <h2>
-                            {index === 0 && `UPCOMING SHOWINGS FOR ${upcomingShowingToday}`}
-                            {index !== 0 && newDaysOfWeek[index]}
-                            </h2> 
+                            {index === 0 ? `UPCOMING SHOWINGS FOR ${day}` : newDaysOfWeek[index]}
+                        </h2> 
                         <ul className="card-schedule-container">
                             {item.time_screen.map((item, index) => (
                                 <li key={index}>
