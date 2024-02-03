@@ -1,8 +1,0 @@
-$grey: #777;
-$theme-gradient: linear-gradient(90deg, #eec42a, #b74d1c);
-
-@mixin bgGradient{
-    background-image: $theme-gradient;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
