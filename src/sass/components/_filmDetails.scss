@@ -124,6 +124,7 @@ h2.section-title{
 
 .days-of-week{
     display: flex;
+    overflow: scroll;
 }
 .day{
     padding: .2rem .8rem;
