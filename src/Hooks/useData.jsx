@@ -63,7 +63,7 @@ function useData() {
                     {...filmDb.theHungerGames,
                         time_screen: [
                             {start_time: '12:00', end_time: '14:00', screen: '05'},
-                            {time: '14:00', end_time: '16:00', screen: '11'}
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     },
                     {...filmDb.renaissance,
