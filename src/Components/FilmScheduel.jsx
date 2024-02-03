@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 function FilmScheduel({filterFilmByDay}) {
 
-    const {filmDb, locationShowings, newDaysOfWeek} = useData()
+    const {filmDb, locationShowings, daysOfWeek, dates} = useData()
     const {id, location} = useParams();
     const [day, setDay] = useState('TODAY')
     const [filmScheduel, setFilmScheduel] = useState([])
@@ -24,11 +24,11 @@ function FilmScheduel({filterFilmByDay}) {
     //Show schedule for what day was clicked
     useEffect(() => {
         if(filterFilmByDay !== null){
-            const dayInfo = locationScheduel.find((item) => item.dateId === filterFilmByDay);
+            const dayInfo = locationScheduel.find((item) => item.date === filterFilmByDay);
             const movie = dayInfo.movies.find((item) => item.id === id.toString())
-            setDay(dayInfo.date)
+            setDay(filterFilmByDay)
             setFilmScheduel([movie])
-            // console.log(x);
+            // console.log(dayInfo);
         }
     }, [filterFilmByDay])
 
@@ -62,7 +62,7 @@ function FilmScheduel({filterFilmByDay}) {
                 filmScheduel.map((item, index) => (
                     <div key={index}>
                         <h2>
-                            {index === 0 ? `UPCOMING SHOWINGS FOR ${day}` : newDaysOfWeek[index]}
+                            {index === 0 ? `UPCOMING SHOWINGS FOR ${day}` : daysOfWeek[dates[index].getDay()]}
                         </h2> 
                         <ul className="card-schedule-container">
                             {item.time_screen.map((item, index) => (
@@ -70,7 +70,7 @@ function FilmScheduel({filterFilmByDay}) {
                                     <button className="card-schedule">
                                         <div>
                                             <div className="time">
-                                                <span>{item.time}</span>
+                                                <span>{item.start_time}</span> - <span>{item.end_time}</span>
                                             </div>
                                             <div className="screen">
                                                 <span>Screen {item.screen}</span>

@@ -34,19 +34,15 @@ function useData() {
 
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-    const todaysDay = new Date().getDay();
-
-    const today = new Date().getDay();
-    let newDaysOfWeek = []
-    let tracker = today;
-    for(let i = 0; i < 6; i++){ 
-        newDaysOfWeek.push(daysOfWeek[tracker])
-        if(tracker === 6){
-            tracker = 0
-        } else{
-            tracker++
-        }
+    const currentDate = new Date();
+    let nextDate = new Date(currentDate);
+    let dates = []
+    for(let i = 0; i < 7; i++){
+        nextDate.setDate(currentDate.getDate() + i)
+        dates.push(nextDate)
+        nextDate = new Date(currentDate);
     }
+    // console.log(dates);
     
 
 
@@ -55,73 +51,73 @@ function useData() {
         location: `London - Westfield's`,
         schedual: {
             today: {
-                date: daysOfWeek[todaysDay],
+                date: daysOfWeek[dates[0].getDay()],
                 dateId: 0,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
-                            {time: '12:00', screen: '01'},
-                            {time: '14:00', screen: '12'}
+                            {start_time: '12:00', end_time: '14:00', screen: '01'},
+                            {start_time: '14:00', end_time: '16:00', screen: '12'}
                         ]
                     },
                     {...filmDb.theHungerGames,
                         time_screen: [
-                            {time: '12:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '12:00', end_time: '14:00', screen: '05'},
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     },
                     {...filmDb.renaissance,
                         time_screen: [
-                            {time: '18:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '18:00', end_time: '20:00', screen: '05'},
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     }
                 ]
             },
             tomorrow: {
-                date: daysOfWeek[todaysDay + 1],
+                date: daysOfWeek[dates[1].getDay()],
                 dateId: 1,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
-                            {time: '12:00', screen: '11'},
-                            {time: '14:00', screen: '13'}
+                            {start_time: '13:00', end_time: '15:00', screen: '11'},
+                            {start_time: '15:00', end_time: '17:00', screen: '13'}
                         ]
                     },
                     {...filmDb.theHungerGames,
                         time_screen: [
-                            {time: '12:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '11:00', end_time: '13:00', screen: '05'},
+                            {start_time: '16:00', end_time: '18:00', screen: '11'}
                         ]
                     },
                     {...filmDb.renaissance,
                         time_screen: [
-                            {time: '18:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '20:00', end_time: '22:00', screen: '10'},
+                            {start_time: '14:00', end_time: '16:00', screen: '01'}
                         ]
                     }
                 ]
             },
             nextDay1: {
-                date: daysOfWeek[todaysDay + 2],
+                date: daysOfWeek[dates[2].getDay()],
                 dateId: 2,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
-                            {time: '12:00', screen: '11'},
-                            {time: '14:00', screen: '13'}
+                            {start_time: '12:00', end_time: '14:00', screen: '11'},
+                            {start_time: '14:00', end_time: '14:00', screen: '13'}
                         ]
                     },
                     {...filmDb.theHungerGames,
                         time_screen: [
-                            {time: '12:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '12:00', end_time: '14:00', screen: '05'},
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     },
                     {...filmDb.renaissance,
                         time_screen: [
-                            {time: '18:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '18:00',end_time: '20:00',  screen: '05'},
+                            {start_time: '14:00', end_time: '16:00',screen: '11'}
                         ]
                     }
                 ]
@@ -132,73 +128,73 @@ function useData() {
         location: `Brighton`,
         schedual: {
             today: {
-                date: daysOfWeek[todaysDay],
+                date: daysOfWeek[dates[0].getDay()],
                 dateId: 0,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
-                            {time: '12:00', screen: '01'},
-                            {time: '14:00', screen: '12'}
+                            {start_time: '12:00', end_time: '14:00', screen: '01'},
+                            {start_time: '14:00', end_time: '16:00', screen: '12'}
                         ]
                     },
                     {...filmDb.theHungerGames,
                         time_screen: [
-                            {time: '12:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '12:00', end_time: '14:00', screen: '05'},
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     },
                     {...filmDb.renaissance,
                         time_screen: [
-                            {time: '18:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '18:00', end_time: '20:00', screen: '05'},
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     }
                 ]
             },
             tomorrow: {
-                date: daysOfWeek[todaysDay + 1],
+                date: daysOfWeek[dates[1].getDay()],
                 dateId: 1,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
-                            {time: '12:00', screen: '11'},
-                            {time: '14:00', screen: '13'}
+                            {start_time: '12:00', end_time: '14:00', screen: '11'},
+                            {start_time: '14:00', end_time: '16:00', screen: '13'}
                         ]
                     },
                     {...filmDb.theHungerGames,
                         time_screen: [
-                            {time: '12:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '12:00', end_time: '14:00', screen: '05'},
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     },
                     {...filmDb.renaissance,
                         time_screen: [
-                            {time: '18:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '18:00', end_time: '20:00', screen: '05'},
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     }
                 ]
             },
             nextDay1: {
-                date: daysOfWeek[todaysDay + 2],
+                date: daysOfWeek[dates[2].getDay()],
                 dateId: 3,
                 movies: [
                     {...filmDb.napoleon,
                         time_screen: [
-                            {time: '12:00', screen: '11'},
-                            {time: '14:00', screen: '13'}
+                            {start_time: '12:00', end_time: '14:00', screen: '11'},
+                            {start_time: '14:00', end_time: '16:00', screen: '13'}
                         ]
                     },
                     {...filmDb.theHungerGames,
                         time_screen: [
-                            {time: '12:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '12:00', end_time: '14:00', screen: '05'},
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     },
                     {...filmDb.renaissance,
                         time_screen: [
-                            {time: '18:00', screen: '05'},
-                            {time: '14:00', screen: '11'}
+                            {start_time: '18:00', end_time: '20:00', screen: '05'},
+                            {start_time: '14:00', end_time: '16:00', screen: '11'}
                         ]
                     }
                 ]
@@ -208,7 +204,7 @@ function useData() {
     ]
 
 
-    return { filmDb, locationShowings , daysOfWeek, newDaysOfWeek};
+    return { filmDb, locationShowings , dates, daysOfWeek};
 }
 
 export default useData;

@@ -3,7 +3,7 @@ import {useEffect} from 'react'
 
 function DaysOfWeekPanel({filterFilmByDay, setFilterFilmByDay}) {
 
-    const {daysOfWeek} = useData()
+    const {daysOfWeek, dates} = useData()
 
     const today = new Date().getDay();
     let newDaysOfWeek = []
@@ -18,6 +18,7 @@ function DaysOfWeekPanel({filterFilmByDay, setFilterFilmByDay}) {
     }
 
     function handleHighlight(e){
+        if(e.target.id >= 3) return
         const elements = Object.values(document.getElementsByClassName('day'));
 
         // Remove highlight button that's active
@@ -34,12 +35,13 @@ function DaysOfWeekPanel({filterFilmByDay, setFilterFilmByDay}) {
     function handleFilterFilmByDay(e){
         if(parseInt(e.target.id) >= 3) return
         setFilterFilmByDay(parseInt(e.target.id))
+        setFilterFilmByDay( daysOfWeek[dates[e.target.id].getDay()])
     }
     
 
     return ( 
     <ul className="days-of-week">
-        {newDaysOfWeek.map((day, index) => (
+        {dates.map((day, index) => (
             <li key={index}>
                 <button  
                     id={index}
@@ -48,7 +50,7 @@ function DaysOfWeekPanel({filterFilmByDay, setFilterFilmByDay}) {
                 >
                     {index === 0 && ('Today')}
                     {index === 1 && ('Tomorrow')} 
-                    {index > 1 && day.split('', 3)} 
+                    {index > 1 && daysOfWeek[dates[index].getDay()].split('', 3)} 
                 </button>
             </li>
         ))}
